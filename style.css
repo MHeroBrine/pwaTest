@@ -3,6 +3,7 @@ body {
 }
 
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
@@ -15,54 +16,103 @@ header {
   color: #fff;
   background-color: #3F51B5;
 }
-header img {
+header .list {
+  top: 0.4rem;
+  right: 0.2666666667rem;
+  position: absolute;
+  z-index: 30;
+}
+header .list img {
   cursor: pointer;
   width: 0.8rem;
+  height: 0.8rem;
+}
+header .list ul {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  right: -0.2666666667rem;
+  top: 1.2rem;
+  z-index: 30;
+}
+header .list ul li {
+  width: 3.2rem;
+  height: 1.3333333333rem;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  font-size: 0.5333333333rem;
+  line-height: 1.3333333333rem;
+  text-align: center;
+  border: 0;
 }
 
-.card {
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.container .card {
+  position: relative;
   font-size: 0.3733333333rem;
   width: 9.3333333333rem;
   height: 7.2rem;
   margin-top: 0.5333333333rem;
   background-color: #fff;
   box-shadow: 0px 0px 5px 0px #666;
-  padding: 0.2666666667rem;
+  padding: 0 0.2666666667rem 0 0.2666666667rem;
   flex-direction: column;
+  overflow: hidden;
+  transition: all 0.5s;
+  animation: slide 0.5s;
 }
-.card h3 {
+.container .card .delete {
+  position: absolute;
+  top: 0.2666666667rem;
+  right: 0.2666666667rem;
+  width: 0.8rem;
+}
+.container .card h3 {
+  margin-top: 10px;
   font-size: 0.5866666667rem;
   margin-bottom: 0.2666666667rem;
 }
-.card .show {
+.container .card .show {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.card .show div {
+.container .card .show div {
   flex: 1;
   height: 3.2rem;
 }
-.card .show div:nth-of-type(2) {
+.container .card .show div:nth-of-type(2) {
   padding: 0.32rem;
 }
-.card .show .img_now {
+.container .card .show .img_now {
   width: 2.6666666667rem;
   height: 3.2rem;
 }
-.card .show span {
+.container .card .show span {
   margin-top: 0.5333333333rem;
   font-size: 0.8rem;
 }
-.card .show ul {
+.container .card .show ul {
   font-size: 0.3733333333rem;
 }
-.card .show ul li {
-  line-height: 0.5333333333rem;
+.container .card .show ul li {
+  line-height: 0.6133333333rem;
   color: #666;
 }
-.card .show ul li span {
+.container .card .show ul li span {
   color: #000;
   font-size: 0.3733333333rem;
+}
+@keyframes slide {
+  from {
+    height: 0;
+  }
+  to {
+    height: 7.2rem;
+  }
 }
 
 .future ul {

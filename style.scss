@@ -9,6 +9,7 @@ body {
 }
 
 header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -20,53 +21,99 @@ header {
     font-weight: lighter;
     color: #fff;
     background-color: #3F51B5;
-    img {
-        cursor: pointer;
-        width: px2rem(30px);
+    .list {
+        top: px2rem(15px);
+        right: px2rem(10px);
+        position: absolute;
+        z-index: 30;
+        img {
+            cursor: pointer;
+            width: px2rem(30px);
+            height: px2rem(30px);
+        }
+        ul {
+            position: absolute;
+            display: none;
+            flex-direction: column;
+            right: px2rem(-10px);
+            top: px2rem(45px);
+            z-index: 30;
+            li {
+                width: px2rem(120px);
+                height: px2rem(50px);
+                background-color: #fff;
+                color: #000;
+                font-weight: bold;
+                font-size: px2rem(20px);
+                line-height: px2rem(50px);
+                text-align: center;
+                border: 0;
+            }
+        }
     }
 }
 
-.card {
-    font-size: px2rem(14px);
-    width: px2rem(350px);
-    height: px2rem(270px);
-    margin-top: px2rem(20px);
-    background-color: #fff;
-    box-shadow: 0px 0px 5px 0px #666;
-    padding: px2rem(10px);
+.container {
+    display: flex;
     flex-direction: column;
-    h3 {
-        font-size: px2rem(22px);
-        margin-bottom: px2rem(10px);
-    }
-    .show {
-        justify-content: space-between;
-        flex-wrap: wrap;
-        div {
-            flex: 1;
-            height: px2rem(120px);
-            &:nth-of-type(2) {
-                padding: px2rem(12px);
-            }
+    .card {
+        position: relative;
+        font-size: px2rem(14px);
+        width: px2rem(350px);
+        height: px2rem(270px);
+        margin-top: px2rem(20px);
+        background-color: #fff;
+        box-shadow: 0px 0px 5px 0px #666;
+        padding: 0 px2rem(10px) 0 px2rem(10px);
+        flex-direction: column;
+        overflow: hidden;
+        transition: all 0.5s;
+        animation: slide 0.5s;
+        .delete {
+            position: absolute;
+            top: px2rem(10px);
+            right: px2rem(10px);
+            width: px2rem(30px);
         }
-        .img_now {
-            width: px2rem(100px);
-            height: px2rem(120px);
+        h3 {
+            margin-top: 10px;
+            font-size: px2rem(22px);
+            margin-bottom: px2rem(10px);
         }
-        span {
-            margin-top: px2rem(20px);
-            font-size: px2rem(30px);
-        }
-        ul {
-            font-size: px2rem(14px);
-            li {
-                line-height: px2rem(20px);
-                color: #666;
-                span {
-                    color: #000;
-                    font-size: px2rem(14px);
+        .show {
+            justify-content: space-between;
+            flex-wrap: wrap;
+            div {
+                flex: 1;
+                height: px2rem(120px);
+                &:nth-of-type(2) {
+                    padding: px2rem(12px);
                 }
             }
+            .img_now {
+                width: px2rem(100px);
+                height: px2rem(120px);
+            }
+            span {
+                margin-top: px2rem(20px);
+                font-size: px2rem(30px);
+            }
+            ul {
+                font-size: px2rem(14px);
+                li {
+                    line-height: px2rem(23px);
+                    color: #666;
+                    span {
+                        color: #000;
+                        font-size: px2rem(14px);
+                    }
+                }
+            }
+        }
+
+        @keyframes slide {
+            from { height: 0; }
+            to { height: px2rem(270px) }
         }
     }
 }
