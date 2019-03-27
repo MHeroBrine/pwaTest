@@ -6,16 +6,16 @@
 //                                           -> 在线：先展示indexDB，再更新
 
 const CACHENAME = 'weather-' + 'v2';
+const path = '/pwaTest';
 const fileToCache = [
-    '/',
-    '/index.html',
-    '/main.js',
-    '/reset.css',
-    '/style.css',
-    '/images/icons/delete.svg',
-    '/images/icons/plus.svg',
-    '/images/partly-cloudy.png',
-    '/images/wind.png'
+    path + '/index.html',
+    path + '/main.js',
+    path + '/reset.css',
+    path + '/style.css',
+    path + '/images/icons/delete.svg',
+    path + '/images/icons/plus.svg',
+    path + '/images/partly-cloudy.png',
+    path + '/images/wind.png'
 ];
 
 self.addEventListener('install', e => {
