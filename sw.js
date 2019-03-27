@@ -6,7 +6,7 @@
 //                                           -> 在线：先展示indexDB，再更新
 
 const CACHENAME = 'weather-' + 'v3';
-const PATH = '';
+const PATH = '/pwa-test';
 const fileToCache = [
     PATH + '/',
     PATH + '/index.html',
