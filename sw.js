@@ -6,16 +6,24 @@
 //                                           -> 在线：先展示indexDB，再更新
 
 const CACHENAME = 'weather-' + 'v2';
-const path = '/pwaTest';
+const PATH = '/pwaTest';
 const fileToCache = [
-    path + '/index.html',
-    path + '/main.js',
-    path + '/reset.css',
-    path + '/style.css',
-    path + '/images/icons/delete.svg',
-    path + '/images/icons/plus.svg',
-    path + '/images/partly-cloudy.png',
-    path + '/images/wind.png'
+    PATH + '/',
+    PATH + '/index.html',
+    PATH + '/main.js',
+    PATH + '/reset.css',
+    PATH + '/style.css',
+    PATH + '/manifest.json',
+    PATH + '/images/icons/delete.svg',
+    PATH + '/images/icons/plus.svg',
+    PATH + '/images/partly-cloudy.png',
+    PATH + '/images/wind.png',
+    PATH + '/images/icons/icon-32x32.png',
+    PATH + '/images/icons/icon-128x128.png',
+    PATH + '/images/icons/icon-144x144.png',
+    PATH + '/images/icons/icon-152x152.png',
+    PATH + '/images/icons/icon-192x192.png',
+    PATH + '/images/icons/icon-256x256.png'
 ];
 
 self.addEventListener('install', e => {
@@ -32,13 +40,11 @@ self.addEventListener('install', e => {
 self.addEventListener('fetch', e => {
     e.respondWith(
         caches.match(e.request).then(function (res) {
-            // console.log(e.request, res);
             if (res) {
                 if (e.request.url.indexOf(self.location.host) !== -1) {
                     // 同源
                     return res;
                 } else {
-                    console.log(res);
                     return res;
                 }
             }
@@ -47,10 +53,8 @@ self.addEventListener('fetch', e => {
             }
             return fetch(e.request).then((response) => {
                 let responeClone = response.clone();
-                console.log(response);
                 let responeClone_2 = response.clone();
                 responeClone_2.json().then(data => {
-                    console.log(data);
                     caches.open(CACHENAME).then(cache => {
                         cache.put(e.request, responeClone);
                     })

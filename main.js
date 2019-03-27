@@ -3,10 +3,12 @@ window.addEventListener('load', function() {
     DOM.addCity();
     if (navigator.onLine) {
         WEATHERINFO.getLocation().then((Response) => {
+            localStorage.setItem('city', Response);
             WEATHERINFO.buildNewCity(Response);
         })
     } else {
-        WEATHERINFO.buildNewCity('重庆');
+        let city = localStorage.getItem('city');
+        WEATHERINFO.buildNewCity(city);
     }
 })
 
