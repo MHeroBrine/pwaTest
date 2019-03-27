@@ -5,7 +5,7 @@
 //                           -> 检查网络情况 -> 离线：展示indexDB中的卡片信息
 //                                           -> 在线：先展示indexDB，再更新
 
-const CACHENAME = 'weather-' + 'v3';
+const CACHENAME = 'weather-' + 'v4';
 const PATH = '/pwa-test';
 const fileToCache = [
     PATH + '/',
@@ -70,7 +70,7 @@ self.addEventListener('fetch', e => {
 
 self.addEventListener('activate', function (event) {
 
-    var cacheWhitelist = ['weather-v1', 'weather-v2'];
+    var cacheWhitelist = ['weather-v1', 'weather-v2', 'weather-v3'];
 
     event.waitUntil(
         // 遍历 caches 里所有缓存的 keys 值
