@@ -114,6 +114,33 @@ header .list ul li {
     height: 7.2rem;
   }
 }
+.container .preload .head {
+  margin: 0.2666666667rem 0 0.1333333333rem 0;
+  background-color: #EBEBEB;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 25%, transparent 25%);
+  background-size: 2.6666666667rem;
+  animation: turning 1s infinite linear;
+  width: 1.3333333333rem;
+  height: 1.3333333333rem;
+  border-radius: 50%;
+}
+.container .preload .item {
+  margin: 0.2666666667rem 0 0.1333333333rem 0;
+  background-color: #EBEBEB;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.15) 25%, transparent 25%);
+  background-size: 2.6666666667rem;
+  animation: turning 1s infinite linear;
+  width: 8rem;
+  height: 0.4rem;
+}
+@keyframes turning {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: 2.6666666667rem;
+  }
+}
 
 .future ul {
   display: flex;
@@ -128,6 +155,9 @@ header .list ul li {
 }
 .future ul li img {
   width: 0.8rem;
+}
+.future ul li p {
+  line-height: 0.5333333333rem;
 }
 .future ul li p:nth-of-type(2) {
   color: #666;

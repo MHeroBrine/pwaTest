@@ -5,18 +5,25 @@
 //                           -> 检查网络情况 -> 离线：展示indexDB中的卡片信息
 //                                           -> 在线：先展示indexDB，再更新
 
-const CACHENAME = 'weather-' + 'v3';
+const CACHENAME = 'weather-' + 'v4';
 const PATH = '/pwaTest';
 const fileToCache = [
     PATH + '/',
     PATH + '/index.html',
     PATH + '/main.js',
+    PATH + '/fontSet.js',
+    PATH + '/skeleton.js',
     PATH + '/reset.css',
     PATH + '/style.css',
     PATH + '/images/icons/delete.svg',
     PATH + '/images/icons/plus.svg',
     PATH + '/images/partly-cloudy.png',
     PATH + '/images/wind.png',
+    PATH + '/images/cloudy_s_sunny.png',
+    PATH + '/images/cloudy.png',
+    PATH + '/images/clear.png',
+    PATH + '/images/rain.png',
+    PATH + '/images/fog.png',
     PATH + '/images/icons/icon-32x32.png',
     PATH + '/images/icons/icon-128x128.png',
     PATH + '/images/icons/icon-144x144.png',
@@ -44,7 +51,23 @@ self.addEventListener('fetch', e => {
                     // 同源
                     return res;
                 } else {
-                    return res;
+                    // 离线状态
+                    if (!navigator.onLine) {
+                        return res;
+                    } else {
+                        return fetch(e.request).then((response) => {
+                            let responeClone = response.clone();
+                            let responeClone_2 = response.clone();
+                            responeClone_2.json().then(data => {
+                                caches.open(CACHENAME).then(cache => {
+                                    cache.put(e.request, responeClone);
+                                })
+                            }).catch(e => {
+                                console.log(e);
+                            })
+                            return response;
+                        })
+                    }
                 }
             }
             if (e.request.url.indexOf('https://pv.sohu.com/cityjson?ie=utf-8') !== -1) {
@@ -58,28 +81,25 @@ self.addEventListener('fetch', e => {
                         cache.put(e.request, responeClone);
                     })
                 }).catch(e => {
-                    console.log(e);
+                    
                 })
                 return response;
             }).catch(e => {
-                console.log(e);
+                
             })
         })
     )
 })
 
 self.addEventListener('activate', function (event) {
-
-    var cacheWhitelist = ['weather-v2'];
-
     event.waitUntil(
         // 遍历 caches 里所有缓存的 keys 值
         caches.keys().then(function (cacheNames) {
             return Promise.all(
-                cacheNames.map(function (cacheName) {
-                    if (cacheWhitelist.includes(cacheName)) {
+                cacheNames.map(function (NAME) {
+                    if (NAME != CACHENAME) {
                         // 删除 v1 版本缓存的文件
-                        return caches.delete(cacheName);
+                        return caches.delete(NAME);
                     }
                 })
             );

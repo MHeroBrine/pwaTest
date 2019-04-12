@@ -116,6 +116,33 @@ header {
             to { height: px2rem(270px) }
         }
     }
+
+    .preload {
+        .head {
+            margin: px2rem(10px) 0 px2rem(5px) 0;
+            background-color: #EBEBEB;
+            background-image: linear-gradient(to right,rgba(255, 255, 255, 0.15) 25%, transparent 25%);
+            background-size: px2rem(100px);
+            animation: turning 1s infinite linear;
+            width: px2rem(50px);
+            height: px2rem(50px);
+            border-radius: 50%;
+        }
+        .item {
+            margin: px2rem(10px) 0 px2rem(5px) 0;
+            background-color: #EBEBEB;
+            background-image: linear-gradient(to right,rgba(255, 255, 255, 0.15) 25%, transparent 25%);
+            background-size: px2rem(100px);
+            animation: turning 1s infinite linear;
+            width: px2rem(300px);
+            height: px2rem(15px);
+        }
+
+        @keyframes turning {
+            from { background-position: 0; }
+            to { background-position: px2rem(100px); }
+        }
+    }
 }
 
 .future {
@@ -132,6 +159,7 @@ header {
                 width: px2rem(30px);
             }
             p {
+                line-height: px2rem(20px);
                 &:nth-of-type(2) {
                     color: #666;
                 }
